@@ -1,3 +1,8 @@
+Nimiq.Log.level = 1;
+Nimiq.GenesisConfig.CONFIGS.main.NETWORK_ID = 43;
+Nimiq.GenesisConfig.CONFIGS.main.SEED_LISTS = [];
+Nimiq.GenesisConfig.CONFIGS.main.SEED_PEERS = [];
+
 const START = Date.now();
 const argv = require('minimist')(process.argv.slice(2));
 const Nimiq = require('../../dist/node.js');
@@ -199,7 +204,9 @@ const $ = {};
     $.network = $.consensus.network;
 
     Nimiq.Log.i(TAG, `Peer address: ${networkConfig.peerAddress.toString()} - public key: ${networkConfig.keyPair.publicKey.toHex()}`);
-
+    console.log("!!!!! Peer ID: " + networkConfig.keyPair.publicKey.toHex() + " !!!!!");
+    
+    
     // TODO: Wallet key.
     $.walletStore = await new Nimiq.WalletStore();
     if (!config.wallet.address && !config.wallet.seed) {
